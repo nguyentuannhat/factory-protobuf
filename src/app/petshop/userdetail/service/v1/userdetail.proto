@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package app.petshop.userdetail.service.v1;
+
+import "app/petshop/base/userdetail/v1/userdetail.proto";
+
+// Request for `GetUserDetail`
+message GetUserDetailRequest {
+  // the user id
+  int32 user_id = 1;
+}
+
+// Response for `GetUserDetail`
+message GetUserDetailResponse {
+  // user detail
+  app.petshop.base.userdetail.v1.UserDetailModel user_detail = 1;
+}
+
+// UserDetailService
+service UserDetailService {
+  /**
+     GetUserDetail
+     Request: {
+       user_id: 1
+     }
+
+     Response : {
+         "user_detail": {
+           "id": "1",
+           "name": "username",
+           "owned_pets": [
+             {
+               "id": 1,
+               "name": "Pet Name",
+               "owner_id": 2
+             }
+           ]
+         }
+     }
+  */
+  rpc GetUserDetail(GetUserDetailRequest) returns (GetUserDetailResponse);
+}

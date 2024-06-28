@@ -1,0 +1,12 @@
+syntax = "proto3";
+package app.petshop.base.petdetail.v1;
+
+// Pet detail
+message PetDetailModel {
+  // Pet ID - Primary Column
+  int32 id = 1;
+  // Pet Name
+  string name = 2;
+  // The owner id
+  int32 owner_id = 3;
+}

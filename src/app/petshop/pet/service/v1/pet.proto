@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package app.petshop.pet.service.v1;
+
+import "app/petshop/base/pet/v1/pet.proto";
+
+// Request for `GetPets`
+message GetPetsRequest {}
+
+// Response for `GetPets`
+message GetPetsResponse {
+  // list of pets
+  repeated app.petshop.base.pet.v1.PetModel pets = 1;
+}
+
+// Request for `CreatePet`.
+message CreatePetRequest {
+  // the pet name
+  string name = 1;
+  // the owner id (user id)
+  string owner_id = 2;
+}
+
+// Response for `CreatePet`.
+message CreatePetResponse {
+  // the pet id
+  string id = 1;
+  // the pet name
+  string name = 2;
+  // the owner id (user id)
+  string owner_id = 3;
+}
+
+// PetService
+service PetService {
+  /**
+     GetPets
+     Request: {}
+
+     Response : {
+         "pets": [
+           {
+             "id": "1",
+             "name": "Pet name",
+             "password": "petpassword"
+           }
+         ]
+     }
+  */
+  rpc GetPets(GetPetsRequest) returns (GetPetsResponse);
+
+  /**
+     CreatePet
+     Request: {
+       "name": "Pet Name",
+       "owner_id": 2
+     }
+
+     Response : {
+       "id": 1,
+       "name": "Pet Name",
+       "owner_id": 2
+     }
+  */
+  rpc CreatePet(CreatePetRequest) returns (CreatePetResponse);
+}

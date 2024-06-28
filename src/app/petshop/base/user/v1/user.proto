@@ -1,0 +1,10 @@
+syntax = "proto3";
+package app.petshop.base.user.v1;
+
+// User model
+message UserModel {
+  // User ID - Primary Column
+  int32 id = 1;
+  // User Name
+  string user_name = 2;
+}

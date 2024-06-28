@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package app.petshop.user.service.v1;
+
+import "app/petshop/base/user/v1/user.proto";
+
+// Request for `GetUsers`
+message GetUsersRequest {}
+
+// Response for `GetUsers`
+message GetUsersResponse {
+  // list of users
+  repeated app.petshop.base.user.v1.UserModel users = 1;
+}
+
+// UserService
+service UserService {
+  /**
+     GetUsers
+     Request: {}
+
+     Response : {
+         "users": [
+           {
+             "id": "1",
+             "name": "username",
+           }
+         ]
+     }
+  */
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+package app.petshop.base.userdetail.v1;
+
+import "app/petshop/base/pet/v1/pet.proto";
+
+// User detail
+message UserDetailModel {
+  // User ID - Primary Column
+  int32 id = 1;
+  // User Name
+  string user_name = 2;
+  // List of pets currently owned
+  repeated app.petshop.base.pet.v1.PetModel owned_pets = 3;
+}

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package app.petshop.petdetail.service.v1;
+
+import "app/petshop/base/petdetail/v1/petdetail.proto";
+
+// Request for `GetPetDetail`
+message GetPetDetailRequest {
+  // the pet id
+  int32 pet_id = 1;
+}
+
+// Response for `GetPetDetail`
+message GetPetDetailResponse {
+  // pet detail
+  app.petshop.base.petdetail.v1.PetDetailModel pet_detail = 1;
+}
+
+// PetDetailService
+service PetDetailService {
+  /**
+         GetPetDetail
+         Request: {
+           pet_id: 1
+         }
+
+         Response : {
+             "pet_detail": {
+               "id": "1",
+               "name": "pet name",
+               "owned_id": 1
+             }
+         }
+  */
+  rpc GetPetDetail(GetPetDetailRequest) returns (GetPetDetailResponse);
+}
